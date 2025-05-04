@@ -65,7 +65,7 @@ pipeline {
         stage('build and Tag docker image') {
             steps {
                 script {
-                        sh "docker build -t Gunjan212/ekart:latest -f docker/Dockerfile ."
+                        sh "docker build -t gunjan212/ekart:latest -f docker/Dockerfile ."
                     }
             }
         }
@@ -74,8 +74,8 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u Gunjan212 -p ${dockerhubpwd}'}
-                   sh 'docker push Gunjan212/ekart:latest'
+                   sh 'docker login -u gunjan212 -p ${dockerhubpwd}'}
+                   sh 'docker push gunjan212/ekart:latest'
                 }
             }
         }
